@@ -65,7 +65,6 @@ def calc_fitness(population, generation=0):
 
 	fit=[]
 	for sudoku_board in population:
-		# sudoku_board = numpy.array(sudoku_board)
 		fitness = 0
 		for i in range(9):
 			different_alleles = set(sudoku_board[:, i])
@@ -80,20 +79,18 @@ def calc_fitness(population, generation=0):
 			print("")
 			print("Max current fitness:",fitness)
 			print("")
-			print("Soln Is: ")
-			board_print(sudoku_board)
+			print("Solution Is: ")
+			print(sudoku_board.astype(int))
 			print("Gen:", generation )
 			sys.exit()
 		fit.append(fitness)
 	return fit
 
 
-def board_print(sudoku_board):
-	print(sudoku_board.astype(int))
 
 sudoku_board = input_sudoku("board1")
 print("Input Sudoku Board:")
-board_print(sudoku_board)
+print(sudoku_board.astype(int))
 num_population=200
 generation = 0
 population = init_population(sudoku_board, num_population)
